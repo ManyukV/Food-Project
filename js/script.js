@@ -39,14 +39,14 @@ window.addEventListener("DOMContentLoaded", function () {
 
   // Timer
 
-  const deadline = "2022-06-11";
+  const deadLine = "2024-09-23";
 
   function getTimeRemaining(endtime) {
     const t = Date.parse(endtime) - Date.parse(new Date()),
       days = Math.floor(t / (1000 * 60 * 60 * 24)),
-      seconds = Math.floor((t / 1000) % 60),
-      minutes = Math.floor((t / 1000 / 60) % 60),
-      hours = Math.floor((t / (1000 * 60 * 60)) % 24);
+      hours = Math.floor((t / (1000 * 60 * 60)) % 24),
+      minutes = Math.floor((t / (1000 * 60)) % 60),
+      seconds = Math.floor((t / 1000) % 60);
 
     return {
       total: t,
@@ -59,7 +59,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
   function getZero(num) {
     if (num >= 0 && num < 10) {
-      return "0" + num;
+      return `0${num}`;
     } else {
       return num;
     }
@@ -89,7 +89,7 @@ window.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  setClock(".timer", deadline);
+  setClock(".timer", deadLine);
 
   // Modal
 
@@ -254,7 +254,7 @@ window.addEventListener("DOMContentLoaded", function () {
           form.reset();
           statusMessage.remove();
         } else {
-            showThanksModal(message.failure);
+          showThanksModal(message.failure);
         }
       });
     });
